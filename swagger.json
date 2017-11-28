@@ -83,7 +83,75 @@
           }
         }
       }
-    }
+    },
+    "/delete": {
+      "post": {
+        "tags": [
+          "blog post"
+        ],
+        "summary": "Delete a blog post",
+        "description": "",
+        "operationId": "deletePost",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Post id used to delete a post",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/deletepostDB"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{'title':title,'post':post, _id:id}]"
+          }
+        }
+      }
+    },
+    "/update": {
+      "post": {
+        "tags": [
+          "blog post"
+        ],
+        "summary": "Update a blog post",
+        "description": "",
+        "operationId": "updatePost",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated post object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatepostDB"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "[{'title':title,'post':post, _id:id}]"
+          }
+        }
+      }
+    },
   },
   "definitions": {
     "blogpostDB": {
@@ -100,6 +168,46 @@
         "post": {
           "type": "string",
           "example": "Lorem Ipsum"
+        }
+      },
+      "xml": {
+        "name": "Pet"
+      }
+    },
+    "updatepostDB": {
+      "type": "object",
+      "required": [
+        "title",
+        "post",
+        "item_id"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "My First Blog Post"
+        },
+        "post": {
+          "type": "string",
+          "example": "Lorem Ipsum"
+        },
+        "item_id": {
+          "type": "string",
+          "example": "1230112312312"
+        }
+      },
+      "xml": {
+        "name": "Pet"
+      }
+    },
+    "deletepostDB": {
+      "type": "object",
+      "required": [
+        "item_id"
+      ],
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "example": "1230112312312"
         }
       },
       "xml": {
