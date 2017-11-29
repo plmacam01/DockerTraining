@@ -11,7 +11,9 @@ services:
     ports:
       - "80:8080"
     environment:
-      - API_URL=http://localhost:8082/swagger.json
+      - API_URL=http://localhost:80/swagger.json
+    volumes:
+      - ./swagger.json:/app/swagger.json
     networks:
       - docker_cont_network
   swagger-editor:
